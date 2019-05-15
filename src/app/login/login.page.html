@@ -1,0 +1,29 @@
+<ion-content  [ngStyle]="{'background':'none'}">
+  <div class="background" alt="" ></div>
+  <div class="middle">
+    <img src="../../assets/icon/logo.png" alt="" class="logo" />
+    <ion-list>
+      <ion-item [ngStyle]="{'background':'none'}">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+      <ion-item  [ngStyle]="{'background':'none'}">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="text" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+    </ion-list>
+    
+  </div>
+</ion-content>
+<ion-footer [ngStyle]="{'background':'none'}">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <ion-button expand="full" fill="clear" (click)="login()">Login</ion-button>
+      </ion-col>
+      <ion-col col-6>
+        <ion-button expand="full" fill="clear" (click)="signup()">Signup</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

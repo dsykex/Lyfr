@@ -1,5 +1,7 @@
 {
   "name": "Lyfr",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
