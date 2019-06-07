@@ -12,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class LandingPage implements OnInit {
   uInfo: any = {};
-  constructor(public router:Router, public route: ActivatedRoute, public af: AngularFireDatabase, public authService: AuthService)
+  constructor(public router:Router, public route: ActivatedRoute, public authService: AuthService)
   { 
 
   }
@@ -21,6 +21,7 @@ export class LandingPage implements OnInit {
   {
     this.authService.getUserInfo().subscribe(userData => {
       this.uInfo = userData;
+      console.log(this.uInfo);
       if(this.uInfo)
       {
         this.router.navigateByUrl('/home');

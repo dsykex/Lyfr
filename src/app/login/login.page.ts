@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, AfterContentInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
-
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as firebase from 'firebase';
 
 @Component({
@@ -14,11 +14,29 @@ export class LoginPage implements OnInit
 {
   public user: any = {};
   public errorMsg: any = '';
-
+  
   constructor(public router: Router, public alertController: AlertController) 
   { 
-
+    
   }
+
+  /*loadMap() 
+  {
+    let options = {
+      accuracy: 0,
+      timeout: 5000,
+      maximumAge: 0
+    }
+    this.geo.getCurrentPosition(options).then(coords => {
+      this.lat = coords.coords.latitude;
+      this.lng = coords.coords.longitude;
+      this.map = new google.maps.Map(this.mapCanvas.nativeElement, {
+        center: {lat: this.lat, lng: this.lng},
+        zoom: 18,
+        tilt: 30
+      });
+    });
+  }*/
 
   ngOnInit()
   {
@@ -37,6 +55,13 @@ export class LoginPage implements OnInit
           this.errorMsg = '';
         }, 3000);
       });
+    }
+    else
+    {
+      this.errorMsg = 'Credential fields cannot be empty.';
+        setTimeout(() => {
+          this.errorMsg = '';
+        }, 3000);
     }
   }
 

@@ -9,6 +9,23 @@
     transform: translate(-50%, -50%);
 }
 
+ion-item {
+    --background: rgba(0,0,0,0);
+    --border-color: rgba(0,0,0,0);
+}
+
+ion-footer {
+    --background: rgba(0,0,0,0);
+    --border-color: rgba(0,0,0,0);
+}
+
+
+.map{
+    height:100%;
+    width:100%;
+    background:#444;
+}
+
 .logo
 {
     width: 100px;

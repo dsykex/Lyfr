@@ -19,6 +19,8 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="GOOGLE_MAPS_ANDROID_API_KEY" value="AIzaSyCfkhZyM-629ck2kJCjyVp8_2xoaj07hUw" />
+    <preference name="GOOGLE_MAPS_IOS_API_KEY" value="AIzaSyCfkhZyM-629ck2kJCjyVp8_2xoaj07hUw" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
