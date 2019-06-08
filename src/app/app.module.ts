@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './auth-service.service';
-import {AngularFireModule} from 'angularfire2';
+import {AngularFireModule} from '@angular/fire';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {environment} from '../environments/environment';
 

@@ -2,7 +2,8 @@ import {Component, OnInit, AfterContentInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AlertController} from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import * as firebase from 'firebase';
+
+import * as firebase from '../fbconfig';
 
 @Component({
   selector: 'app-login',
@@ -47,7 +48,7 @@ export class LoginPage implements OnInit
   {
     if(this.user.email && this.user.password)
     {
-      firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(()=>{
+      firebase.default.auth().signInWithEmailAndPassword(this.user.email, this.user.password).then(()=>{
         this.router.navigateByUrl('/home');
       }).catch(() => {
         this.errorMsg = 'An error occured. Make sure your login credentials are correct and your network is established.';
@@ -67,52 +68,34 @@ export class LoginPage implements OnInit
 
   signup()
   {
-
+    this.presentAlert();
   }
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Prompt!',
+      header: 'Welcome to Lyfr!',
       inputs: [
         {
-          name: 'name1',
+          name: 'name',
           type: 'text',
-          placeholder: 'Placeholder 1'
+          placeholder: 'Display Name'
         },
         {
-          name: 'name2',
-          type: 'text',
-          id: 'name2-id',
-          value: 'hello',
-          placeholder: 'Placeholder 2'
+          name: 'email',
+          type: 'email',
+          id: 'email-id',
+          placeholder: 'Email'
         },
         {
-          name: 'name3',
-          value: 'http://ionicframework.com',
-          type: 'url',
-          placeholder: 'Favorite site ever'
+          name: 'password',
+          type: 'password',
+          placeholder: 'Password'
         },
         // input date with min & max
         {
-          name: 'name4',
-          type: 'date',
-          min: '2017-03-01',
-          max: '2018-01-12'
-        },
-        // input date without min nor max
-        {
-          name: 'name5',
-          type: 'date'
-        },
-        {
-          name: 'name6',
-          type: 'number',
-          min: -5,
-          max: 10
-        },
-        {
-          name: 'name7',
-          type: 'number'
+          name: 'confirm_password',
+          type: 'password',
+          placeholder: 'Confirm Password'
         }
       ],
       buttons: [
@@ -124,9 +107,36 @@ export class LoginPage implements OnInit
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Ok',
+          text: 'Signup',
           handler: (data) => {
-            console.log(data);
+            if(data.name && data.email && data.password && data.confirm_password)
+            {
+              let db = firebase.default.firestore();
+              let users = db.collection('users');
+            
+              if(data.password == data.confirm_password)
+              {
+                let newUser = {
+                  name: data.name,
+                  email: data.email,
+                  password: data.password,
+                  createdAt: Date.now(),
+                  rank: 'm'
+                }
+                firebase.default.auth().createUserWithEmailAndPassword(data.email, data.password).then(()=>{
+                  users.doc(data.email).set(newUser).then(()=> {
+                    firebase.default.auth().signInWithEmailAndPassword(data.email,data.password).then(()=>{
+                      this.router.navigateByUrl('/home');
+                    })
+                  })
+                }).catch(error => {
+                  this.errorMsg = 'The email address is already used by another account.';
+                  setTimeout(() => {
+                    this.errorMsg = '';
+                  }, 3000);
+                })
+              }
+            }
           }
         }
       ]
