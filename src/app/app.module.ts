@@ -11,12 +11,13 @@ import {AngularFireModule} from '@angular/fire';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {environment} from '../environments/environment';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { HttpModule, Http } from '@angular/http';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    BrowserModule, HttpModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [
