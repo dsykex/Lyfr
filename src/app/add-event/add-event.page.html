@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-event</ion-title>
+    <ion-title class="text-center">Create An Event</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <p class="text-center" style="color:#2582fc">Just know.. there is no start or endtime to events! Your responsible for starting the fun and ending the fun! Its all in your control.</p>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Event Name</ion-label>
+      <ion-input type="text" [ngModel]="event.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Event Name</ion-label>
+      <ion-textarea type="text" [ngModel]="event.description"></ion-textarea>
+    </ion-item>
+  </ion-list>
 </ion-content>

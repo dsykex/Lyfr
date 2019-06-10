@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-event.page.scss'],
 })
 export class AddEventPage implements OnInit {
-
+  public event: any = {};
+  
+  
+  
   constructor() { }
 
   ngOnInit() {

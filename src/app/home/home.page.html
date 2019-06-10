@@ -8,8 +8,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [ngStyle]="{'background':'none'}">
+<ion-content [ngStyle]="{'background':'none'}" fullscreen>
   <div class="background"></div>
+  <ion-card>
+    <ion-item>
+      <p>{{results}}</p>
+      <p>World</p>
+    </ion-item>
+  </ion-card>
     <ion-list>
       <ion-card>
         <img src="../../assets/media/landing-bg.png" alt="" />

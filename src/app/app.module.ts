@@ -10,6 +10,7 @@ import { AuthService } from './auth-service.service';
 import {AngularFireModule} from '@angular/fire';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {environment} from '../environments/environment';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import {environment} from '../environments/environment';
     StatusBar,
     SplashScreen,
     Geolocation,
+    NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
