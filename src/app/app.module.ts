@@ -12,7 +12,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {environment} from '../environments/environment';
 import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { HttpModule, Http } from '@angular/http';
-
+import { Camera } from '@ionic-native/camera/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,6 +24,7 @@ import { HttpModule, Http } from '@angular/http';
     StatusBar,
     SplashScreen,
     Geolocation,
+    Camera,
     NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
