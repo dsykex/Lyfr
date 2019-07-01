@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import * as firebase from '../fbconfig';
 import {Router} from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ActionSheetController } from '@ionic/angular';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import {Http} from '@angular/http';
@@ -14,7 +14,7 @@ import {LocationService} from '../location-service.service';
 export class AddEventPage implements OnInit {
   public event: any = {};
   
-  constructor(public router: Router, public locService: LocationService) { }
+  constructor(public router: Router, public locService: LocationService, public actionSheet: ActionSheetController) { }
   public area: string;
   public city: any;
   public address: any;

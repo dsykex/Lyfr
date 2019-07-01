@@ -4,31 +4,28 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p class="text-center" style="color:#2582fc">Just know.. there is no start or endtime to events! Your responsible for starting the fun and ending the fun! Its all in your control.</p>
   <ion-item>
     <ion-thumbnail *ngIf="thumbnail">
-      <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+      <img src="../../assets/media/landing-bg.png">
     </ion-thumbnail>
   </ion-item>
   <ion-list>
     <ion-item>
-      <ion-label>Upload A Thumbnail</ion-label>
-      <ion-button expand="full" fill="clear" (click)="uploadThumbnail()"><ion-icon name="camera" slot="icon-only"></ion-icon></ion-button>
+      <ion-button expand="full" fill="solid" (click)="uploadThumbnail()"><ion-icon name="camera"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Name</ion-label>
-      <ion-input type="text" [ngModel]="event.name"></ion-input>
+      <ion-input type="text" placeholder="Name" [ngModel]="event.name"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea rows="6" type="text" [ngModel]="event.description"></ion-textarea>
+
+      <ion-textarea rows="6" type="text" placeholder="Description" [ngModel]="event.description"></ion-textarea>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Tags</ion-label>
-      <ion-input type="text" [ngModel]="event.name"></ion-input>
+
+      <ion-input type="text" placeholder="Tags" [ngModel]="event.name"></ion-input>
     </ion-item>
   </ion-list>
 </ion-content>
 <ion-footer>
-  <ion-button expand="full" fill="outline" (click)="createEvent">Bring to life!</ion-button>
+  <ion-button expand="block" fill="outline" (click)="createEvent()">Bring to life!</ion-button>
 </ion-footer>
