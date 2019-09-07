@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation/';
 
 import * as firebase from '../fbconfig';
 import { Router } from '@angular/router';
@@ -13,37 +13,23 @@ declare var google;
 })
 export class MapPage implements OnInit {
 
-  constructor(public router: Router, public geo: Geolocation) { }
+  constructor(public router: Router) { }
 
   @ViewChild('mapCanvas') mapCanvas: ElementRef;
   map: any;
 
   ngOnInit() {
-    //this.loadMap();
-    let options = {
-      accuracy: 0,
-      timeout: 5000,
-      maximumAge: 0
-    }
-    this.geo.getCurrentPosition(options).then(coords => {
-      let _lat = coords.coords.latitude;
-      let _lng = coords.coords.longitude;
-      this.map = new google.maps.Map(this.mapCanvas.nativeElement, {
-        center: {lat: _lat, lng: _lng},
-        zoom: 18,
-        tilt: 30
-      });
-    });
+    this.loadMap();
   }
 
   loadMap() 
   {
     let options = {
-      accuracy: 0,
+      enableHighAccuracy: true,
       timeout: 5000,
-      maximumAge: 0
+      maximumAge: 3000
     }
-    this.geo.getCurrentPosition(options).then(coords => {
+    Geolocation.getCurrentPosition(options).then(coords => {
       let _lat = coords.coords.latitude;
       let _lng = coords.coords.longitude;
       this.map = new google.maps.Map(this.mapCanvas.nativeElement, {
@@ -53,5 +39,4 @@ export class MapPage implements OnInit {
       });
     });
   }
-
 }

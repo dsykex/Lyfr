@@ -25,7 +25,6 @@ import { Camera } from '@ionic-native/camera/ngx';
   providers: [
     StatusBar,
     SplashScreen,
-    Geolocation,
     Camera,
     NativeGeocoder,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

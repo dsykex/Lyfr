@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 
 import {AuthService} from '../auth-service.service';
@@ -12,23 +12,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class LandingPage implements OnInit {
   uInfo: any = {};
-  constructor(public router:Router, public route: ActivatedRoute, public authService: AuthService)
+  constructor(public router:Router, public route: ActivatedRoute, public zone: NgZone, public authService: AuthService)
   { 
 
   }
 
   ngOnInit()
   {
-    this.authService.getUserInfo().subscribe(userData => {
+    this.authService.getUserInfo().then(userData => {
       this.uInfo = userData;
       console.log(this.uInfo);
       if(this.uInfo)
       {
-        this.router.navigateByUrl('/home');
+        this.zone.run(()=>{
+          this.router.navigateByUrl('/home');
+        })
       }
       else
       { 
-        this.router.navigateByUrl('/login');
+        this.zone.run(()=>{
+          this.router.navigateByUrl('/login');
+        })
       }
     });
     

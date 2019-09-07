@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation } from '@ionic-native/geolocation';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
 
@@ -13,12 +13,17 @@ export class LocationService {
   lat: any;
   lng: any;
 
-  constructor(public geo: Geolocation, public http: Http) { }
+  constructor(public http: Http) { }
 
   getLocationInfo() : Observable<any>
   {
     let locObserver = new Observable(watcher => {
-      this.geo.getCurrentPosition().then(pos => {   
+      let options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 3000
+      }
+      Geolocation.getCurrentPosition(options).then(pos => {   
         this.http.post(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${pos.coords.latitude},${pos.coords.longitude}&key=AIzaSyCfkhZyM-629ck2kJCjyVp8_2xoaj07hUw`, null)
           .subscribe(data => {
           let locData = data.json();

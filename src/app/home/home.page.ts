@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
 
   @ViewChild('slides') slides: IonSlides;
 
-  constructor(public locService: LocationService, public authService: AuthService, public router: Router, public http: Http, public geo: Geolocation, public nativeGeo: NativeGeocoder, public alertCtrl: AlertController) { 
+  constructor(public locService: LocationService, public authService: AuthService, public router: Router, public http: Http, public nativeGeo: NativeGeocoder, public alertCtrl: AlertController) { 
     // https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCfkhZyM-629ck2kJCjyVp8_2xoaj07hUw
 
   }
@@ -44,7 +44,6 @@ export class HomePage implements OnInit {
   loadEvents(type: string)
   {
     console.log(type);
-    
   }
 
 
@@ -60,7 +59,7 @@ export class HomePage implements OnInit {
      });
 
      this.thumb = this.eventThumbs[0];
-     this.authService.getUserInfo().subscribe(uInfo => {
+     this.authService.getUserInfo().then(uInfo => {
        this.user = uInfo;
      })
   }
